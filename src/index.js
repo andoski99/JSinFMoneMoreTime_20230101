@@ -2,6 +2,8 @@
 
 import c3 from "c3";
 
+window.loadChart = function () {
+
 data = [
   {
     month: "Jan",
@@ -58,3 +60,5 @@ const chart = c3.generate(options);
 // btn.onclick = function () {
 //   alert("You ran some JavaScript");
 // };
+
+};
