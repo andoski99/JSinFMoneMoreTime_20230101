@@ -9,8 +9,15 @@ console.log ("loadChart",json);
 const obj = JSON.parse(json);
 
 const data = obj.data;
+const chartType = obj.chartType;
+const chartLabels = obj.chartLabels;
+
 
 console.log(obj);
+
+    // <h1>Alright. You're set.</h1>
+    // <h2>Now build something amazing!</h2>
+    // <button type="button">Click Me!</button>);
 
 // data = [
 //   {
@@ -47,8 +54,13 @@ const options = {
   },
 
   data: {
-    type: "bar",
-    labels: true,
+
+    
+    onclick: function (d, element) { 
+  
+},
+    type: chartType,
+    labels: chartLabels,
 
     json: data,
     keys: { x: "month", value: ["Apples", "Peaches", "Pears"] },
