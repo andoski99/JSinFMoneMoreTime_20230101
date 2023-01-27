@@ -18,10 +18,12 @@
     "eslint-config-prettier": "^8.5.0",
     "open": "^8.2.1",
     "parcel": "^2.8.1",
-    "prettier": "2.6.2"
+    "prettier": "2.6.2",
+    "process": "^0.11.10"
   },
   "dependencies": {
     "c3": "^0.4.24",
-    "phidget22": "^3.12.3"
+    "phidget22": "^3.12.3",
+    "phidgets": "^0.5.12"
   }
 }

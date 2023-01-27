@@ -1,7 +1,8 @@
 //Here we're importing items we'll need. You can add other imports here.
 
 import c3 from "c3";
-
+const months = [
+  "Jan","Feb","Mar","Apr","May","Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 window.loadChart = function (json) {
 
 console.log ("loadChart",json);
@@ -56,8 +57,23 @@ const options = {
   data: {
 
     
-    onclick: function (d, element) { 
-  
+  onclick: function (d) {
+    console.log("data",d);
+    const name = d.name;
+    const index = d.index;
+    const value = d.value;  
+    const month = months[index];
+    console.log("Index",index);
+    console.log("Month",month);
+    const newObj = {month,name,value}; 
+
+    console.log("NewOBJ",newObj);//     const {value, id, index} = d;
+//     const month = months[index];
+// // console.log("data", d);
+//     const obj = {id,value,month};
+    FileMaker.PerformScript("onChartClick",JSON.stringify(newObj))
+
+
 },
     type: chartType,
     labels: chartLabels,
@@ -75,10 +91,21 @@ const options = {
 
 const chart = c3.generate(options);
 
-// //The first function. Remove this.
-// const btn = document.querySelector("button");
-// btn.onclick = function () {
-//   alert("You ran some JavaScript");
-// };
+window.transformChart = function(type){
+
+  chart.transform(type);
+};
+
+window.loadNewData = function(json){
+  
+const obj = JSON.parse(json);
+const data = obj.data;
+console.log(data);
+chart.load({
+  json: data,
+  keys: { x: "month", value: ["Bananas"] },
+});
+
+};
 
 };
